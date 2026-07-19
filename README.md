@@ -22,5 +22,3 @@ A modern, responsive personal developer portfolio built with HTML, CSS, and Java
 ## 👩‍💻 Author
 
 Zaara Mulani
-
-GitHub: https://github.com/zaaraa-hub
