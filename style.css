@@ -621,9 +621,14 @@ header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px
    REVEAL ANIMATION
    ============================================ */
 .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
