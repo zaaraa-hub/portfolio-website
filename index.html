@@ -1,58 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaara Mulani | Portfolio website</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zaara Mulani — Developer Portfolio</title>
+<meta name="description" content="Zaara Mulani — CSE diploma student building with Java, Python and modern web technologies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <h2 href="home" class="logo">Zaara</h2>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#contact">contact</a></li>
 
+  <!-- animated background -->
+  <div class="bg-field" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="noise"></div>
+  </div>
 
-            </ul>
-        </nav>
-    </header>
-    <main>
-    <section id="home">
-        <p>Hi, I'm</p>
-        <h1>Zaara Mulani</h1>
-        <h2>CSE Diploma Student • Java Developer • Python Enthusiast • Frontend Web Developer</h2>
-        <p>
-          I'm a Computer Science Engineering diploma student passionate about building clean,
-          responsive, and user-friendly applications. I enjoy turning ideas into real projects
-          while continuously learning Java, Python, and modern web technologies.
-        </p>
-        a href="#projects">🚀 View Projects</a>
-        <a href="#contact">📬 Contact Me</a>
+  <!-- NAV -->
+  <header>
+    <nav class="navbar" id="navbar">
+      <a href="#home" class="logo">Zaara</a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#resume" class="nav-link" data-section="resume">Resume</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <p class="hero-eyebrow reveal">Hi, I'm</p>
+      <h1 class="hero-name reveal">Zaara Mulani</h1>
+      <div class="hero-role reveal">
+        <span id="roleText">CSE Diploma Student</span>
+      </div>
+      <p class="hero-desc reveal">
+        I'm a Computer Science Engineering diploma student passionate about building clean,
+        responsive, and user-friendly applications — turning ideas into real projects while
+        continuously learning Java, Python, and modern web technologies.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#projects" class="btn btn-primary magnetic">View Projects</a>
+        <a href="#contact" class="btn btn-ghost magnetic">Contact Me</a>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll down">
+        <span></span>
+      </a>
     </section>
 
-    <section id="about"></section>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="section-inner about-grid">
+        <div class="reveal">
+          <h2 class="section-title">About Me</h2>
+          <p class="about-text">
+            I'm a Computer Science Engineering diploma student at MPSTME, NMIMS, currently
+            focused on software development — writing Java, learning Python, and building on the
+            web. Most of what I make starts as a small, practical idea I want to see working end
+            to end, rather than a theory exercise.
+          </p>
+          <p class="about-text">
+            I'm gradually leaning into AI and data science, and I like projects that sit where
+            technology meets a real, everyday problem — something someone would actually open and
+            use, not just a demo.
+          </p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-stat">
+            <span class="stat-num">1st</span>
+            <span class="stat-label">Year CSE Diploma, MPSTME</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">7+</span>
+            <span class="stat-label">Projects shipped or in progress</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">2029</span>
+            <span class="stat-label">Target: internship at Google</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section id="skills"></section>
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="section-inner">
+        <h2 class="section-title reveal">Skills</h2>
+        <p class="section-sub reveal">Technologies I'm actively learning and building with.</p>
 
-    <section id="projects"></section>
+        <div class="skills-grid reveal">
+          <div class="skill-group">
+            <h3>Programming</h3>
+            <div class="pills">
+              <span class="pill">Java</span>
+              <span class="pill">Python</span>
+              <span class="pill">C</span>
+              <span class="pill">JavaScript</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Web</h3>
+            <div class="pills">
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Database</h3>
+            <div class="pills">
+              <span class="pill">MySQL</span>
+              <span class="pill">SQL</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Tools</h3>
+            <div class="pills">
+              <span class="pill">Git</span>
+              <span class="pill">GitHub</span>
+              <span class="pill">VS Code</span>
+              <span class="pill">MySQL Workbench</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section id="certifications"></section>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="section-inner">
+        <h2 class="section-title reveal">Projects</h2>
+        <p class="section-sub reveal">A few I'm building right now, and the rest of the shelf.</p>
 
-    <section id="resume"></section>
+        <div class="bento-grid reveal" id="featuredGrid"></div>
 
-    <section id="contact"></section>
+        <h3 class="more-title reveal">More on GitHub</h3>
+        <div class="more-grid reveal" id="moreGrid"></div>
+      </div>
+    </section>
 
-    </main>
- 
-    
+    <!-- RESUME -->
+    <section id="resume" class="section">
+      <div class="section-inner resume-inner reveal">
+        <h2 class="section-title">Resume</h2>
+        <p class="section-sub">Want the full picture? Check out my resume.</p>
+        <div class="hero-actions">
+          <a href="assets/resume.pdf" target="_blank" rel="noopener" class="btn btn-primary magnetic">View Resume</a>
+          <a href="assets/resume.pdf" download class="btn btn-ghost magnetic">Download Resume</a>
+        </div>
+      </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="section-inner contact-grid">
+        <div class="reveal">
+          <h2 class="section-title">Let's Connect</h2>
+          <p class="about-text">
+            I'm always open to learning, building, and connecting with people in tech.
+          </p>
+          <div class="contact-links">
+            <a href="https://github.com/zaaraa-hub" target="_blank" rel="noopener" class="contact-link">
+              <span>GitHub</span><span class="arrow-icon">↗</span>
+            </a>
+            <a href="https://www.linkedin.com/in/zaara-mulani" target="_blank" rel="noopener" class="contact-link">
+              <span>LinkedIn</span><span class="arrow-icon">↗</span>
+            </a>
+            <a href="mailto:YOUR_EMAIL_HERE" class="contact-link">
+              <span>Email</span><span class="arrow-icon">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="field">
+            <input type="text" id="name" name="name" placeholder=" " required>
+            <label for="name">Your name</label>
+            <span class="field-error" id="nameError"></span>
+          </div>
+          <div class="field">
+            <input type="email" id="email" name="email" placeholder=" " required>
+            <label for="email">Your email</label>
+            <span class="field-error" id="emailError"></span>
+          </div>
+          <div class="field">
+            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+            <label for="message">Message</label>
+            <span class="field-error" id="messageError"></span>
+          </div>
+          <button type="submit" class="btn btn-primary magnetic" id="formSubmit">Send Message</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Zaara Mulani</p>
+    <div class="footer-links">
+      <a href="https://github.com/zaaraa-hub" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/zaara-mulani" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
