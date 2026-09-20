@@ -1,5 +1,5 @@
 /* ============================================
-   DATA — projects are rendered from these arrays
+   DATA — projects are rendered from this array
    so adding a new one later is a one-line edit.
    ============================================ */
 
@@ -16,50 +16,33 @@ const featuredProjects = [
   },
   {
     name: "India Pincode Explorer",
-    status: "In Progress",
+    status: "Live",
     description:
-      "A pincode lookup tool expanding from a Bangalore-only prototype to cover all of India, built on a live pincode API with an AI-assisted search layer.",
-    tech: ["JavaScript", "Node.js", "REST API"],
-    github: null,
-    live: null,
+      "A full-stack PIN code search tool covering all of India — an Express backend retrieves real postal data including post office, district, state, and region, with search and location-based results.",
+    tech: ["Node.js", "Express.js", "JavaScript", "HTML", "CSS"],
+    github: "https://github.com/zaaraa-hub/India-pincode-explorer",
+    live: "https://india-pincode-explorer-0fki.onrender.com/",
+    large: false,
+  },
+  {
+    name: "Formula One Hub",
+    status: "Live",
+    description:
+      "A responsive Formula One themed website built to explore frontend development, UI design, and web technologies.",
+    tech: ["HTML", "CSS"],
+    github: "https://github.com/zaaraa-hub/formula-one-hub",
+    live: "https://zaaraa-hub.github.io/formula-one-hub/",
     large: false,
   },
   {
     name: "TaskFlow",
     status: "In Progress",
     description:
-      "A task management app I'm currently building — the next step up in complexity after my earlier console-based Java projects.",
-    tech: ["JavaScript", "HTML", "CSS"],
-    github: null,
+      "A Java task manager being built step by step into a full-stack productivity platform — currently covering OOP, collections, and file handling, with SQL and a web layer next.",
+    tech: ["Java", "OOP", "File Handling"],
+    github: "https://github.com/zaaraa-hub/TaskFlow",
     live: null,
     large: false,
-  },
-];
-
-const moreProjects = [
-  {
-    name: "Formula One Hub",
-    description: "F1-themed site exploring frontend UI and web fundamentals.",
-    github: "https://github.com/zaaraa-hub/formula-one-hub",
-    live: "https://zaaraa-hub.github.io/formula-one-hub/",
-  },
-  {
-    name: "Java Bank Manager",
-    description: "Console banking app — OOP, file handling, exceptions.",
-    github: "https://github.com/zaaraa-hub/java-bank-manager",
-    live: null,
-  },
-  {
-    name: "Java Library Manager",
-    description: "Book management with HashMap storage and file persistence.",
-    github: "https://github.com/zaaraa-hub/java-library-manager",
-    live: null,
-  },
-  {
-    name: "Java Student Management System",
-    description: "Menu-driven student records system built with OOP.",
-    github: "https://github.com/zaaraa-hub/java-student-management-system",
-    live: null,
   },
 ];
 
@@ -88,25 +71,7 @@ function renderFeatured() {
     .join("");
 }
 
-function renderMore() {
-  const grid = document.getElementById("moreGrid");
-  grid.innerHTML = moreProjects
-    .map(
-      (p) => `
-      <a href="${p.github}" target="_blank" rel="noopener" class="more-card">
-        <div class="more-card-info">
-          <h4>${p.name}</h4>
-          <p>${p.description}</p>
-        </div>
-        <span class="arrow-icon">↗</span>
-      </a>
-    `
-    )
-    .join("");
-}
-
 renderFeatured();
-renderMore();
 
 /* ============================================
    MOBILE NAV
@@ -167,26 +132,6 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
-/* ============================================
-   ROLE ROTATION (hero subtitle)
-   ============================================ */
-const roles = [
-  "CSE Diploma Student",
-  "Java Developer",
-  "Python Enthusiast",
-  "Frontend Developer",
-];
-let roleIndex = 0;
-const roleEl = document.getElementById("roleText");
-
-setInterval(() => {
-  roleEl.classList.add("fade");
-  setTimeout(() => {
-    roleIndex = (roleIndex + 1) % roles.length;
-    roleEl.textContent = roles[roleIndex];
-    roleEl.classList.remove("fade");
-  }, 350);
-}, 2600);
 
 /* ============================================
    TILT EFFECT ON PROJECT CARDS
@@ -247,10 +192,11 @@ backToTop.addEventListener("click", () => {
 });
 
 /* ============================================
-   CONTACT FORM VALIDATION
+   CONTACT FORM VALIDATION + FORMSPREE SUBMIT
    ============================================ */
 const form = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvkgkzeq";
 
 function showError(fieldId, message) {
   document.getElementById(`${fieldId}Error`).textContent = message;
@@ -264,7 +210,7 @@ function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   clearErrors();
 
@@ -288,13 +234,28 @@ form.addEventListener("submit", (e) => {
 
   if (!valid) return;
 
-  // No backend wired up yet — this simulates a send.
-  // Swap this block for a real fetch() call once a form endpoint exists.
+  const submitBtn = document.getElementById("formSubmit");
+  submitBtn.disabled = true;
   formStatus.textContent = "Sending…";
-  setTimeout(() => {
-    formStatus.textContent = `Thanks, ${name.split(" ")[0]} — I'll get back to you soon.`;
-    form.reset();
-  }, 700);
+
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(form),
+    });
+
+    if (res.ok) {
+      formStatus.textContent = `Thanks, ${name.split(" ")[0]} — I'll get back to you soon.`;
+      form.reset();
+    } else {
+      formStatus.textContent = "Something went wrong — try emailing me directly instead.";
+    }
+  } catch (err) {
+    formStatus.textContent = "Something went wrong — try emailing me directly instead.";
+  } finally {
+    submitBtn.disabled = false;
+  }
 });
 
 /* ============================================
@@ -303,4 +264,13 @@ form.addEventListener("submit", (e) => {
 const navbar = document.getElementById("navbar");
 window.addEventListener("scroll", () => {
   navbar.style.borderColor = window.scrollY > 40 ? "rgba(184,60,79,0.35)" : "rgba(255,255,255,0.09)";
+});
+const emailLink = document.getElementById("emailLink");
+emailLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  navigator.clipboard.writeText("zaara.mulani10@gmail.com");
+  const label = emailLink.querySelector("span");
+  const original = label.textContent;
+  label.textContent = "Copied!";
+  setTimeout(() => (label.textContent = original), 1500);
 });
